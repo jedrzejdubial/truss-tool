@@ -8,7 +8,7 @@ export default function Home() {
     <div className={"h-screen flex flex-col justify-center items-center"}>
         <div className={"h-full flex flex-col justify-center items-center gap-3"}>
             <h1 className={"text-3xl font-semibold"}>Welcome to Truss Tool</h1>
-            <Button icon={FilePlus}/>
+            <Button icon={FilePlus} path={"/new"} />
             <p>Create a new project</p>
         </div>
 
