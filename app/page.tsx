@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className={"h-screen flex flex-col justify-center items-center"}>
       <div className={"h-full flex flex-col justify-center items-center gap-3"}>
-        <h1 className={"text-3xl font-semibold"}>Welcome to Truss Tool</h1>
+        <h1>Welcome to Truss Tool</h1>
         <Button icon={ FilePlus } path={"/new"} />
         <p>Create a new project</p>
       </div>

@@ -3,10 +3,11 @@
 import { useRef } from "react";
 import Button from "@/app/components/Button";
 import Dialog from "@/app/components/Dialog";
+import ListButton from "@/app/components/ListButton";
 import list from "@/public/list.json";
 import { ListNumbers, DownloadSimple, Plus } from "@phosphor-icons/react";
 
-export default function Page() {
+export default async function Page() {
   const elementsDialog = useRef(null);
 
   return (
@@ -22,11 +23,9 @@ export default function Page() {
       </div>
 
       <Dialog title={"Elements"} ref={elementsDialog}>
-        <h1>Hello World</h1>
-
-        <div>
-          {list.objects.map(obj => (
-            <p>{ obj.word }</p>
+        <div className={"grid grid-cols-3 mt-1"}>
+          {list.items.map(item => (
+            <ListButton key={ item.id } item={ item } />
           ))}
         </div>
       </Dialog>
