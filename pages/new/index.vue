@@ -78,50 +78,50 @@ const showStartProject = computed(() => trusses.value.length === 0)
         <Button title="Download an image of current canvas" :tag="PhDownloadSimple" @click="download" /> <!-- Doesn't work on Linux, works on Mac (???) -->
     </nav>
 
-    <div id="canvas" :class="{ center: showStartProject }">
-        <div v-if="showStartProject" class="startProject center">
-            <Button title="Add truss" :tag="PhPlus" @click="openListDialog(null, null)" />
-            <p>Start your project by adding the first truss</p>
-        </div>
-
-        <Truss
-            v-for="truss in trusses"
-            v-bind="truss"
-            @remove="removeTruss(truss.id)"
-            @edge="({ side, id }) => openListDialog(side, id)"
-            :key="truss.id"
-        />
+  <div id="canvas" :class="{ center: showStartProject }">
+    <div v-if="showStartProject" class="startProject center">
+      <Button title="Add truss" :tag="PhPlus" @click="openListDialog(null, null)" />
+      <p>Start your project by adding the first truss</p>
     </div>
 
-    <Dialog title="Elements" id="listDialog">
-        <div id="list_bottom">
-            <ListButton
-                v-for="(item, index) in list.items"
-                :item="item"
-                @click="addTruss(item)"
-                :key="index"
-            />
-        </div>
-    </Dialog>
+    <Truss
+      v-for="truss in trusses"
+      v-bind="truss"
+      @remove="removeTruss(truss.id)"
+      @edge="({ side, id }) => openListDialog(side, id)"
+      :key="truss.id"
+    />
+  </div>
 
-    <Dialog title="Details" id="details">
-        <p v-for="(item, index) in trussCount" :key="index">{{ item }}</p>
-    </Dialog>
+  <Dialog title="Elements" id="listDialog">
+    <div id="list_bottom">
+      <ListButton
+        v-for="(item, index) in list.items"
+        :item="item"
+        @click="addTruss(item)"
+        :key="index"
+      />
+    </div>
+  </Dialog>
+
+  <Dialog title="Details" id="details">
+    <p v-for="(item, index) in trussCount" :key="index">{{ item }}</p>
+  </Dialog>
 </template>
 
 <style>
 @import url("~/assets/css/styles.css");
 
 nav {
-    display: flex;
-    gap: 12px;
-    padding: 12px;
+  display: flex;
+  gap: 12px;
+  padding: 12px;
 }
 
 #list_bottom {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 8px;
 }
 
 #canvas {
@@ -130,9 +130,9 @@ nav {
 }
 
 .center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

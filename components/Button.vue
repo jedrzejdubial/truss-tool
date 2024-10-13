@@ -15,18 +15,21 @@ const handleClick = computed(() => {
 </script>
 
 <template>
-    <button :title="props.title" :style="{ width: props.width + 'px', height: props.height + 'px' }" @click="handleClick">
-        <component :is="() => h(props.tag, { size: props.iconSize })" />
-    </button>
+  <button
+    :title="props.title"
+    :style="{ width: props.width + 'px', height: props.height + 'px' }"
+    @click="handleClick">
+      <component :is="() => h(props.tag, { size: props.iconSize })" />
+  </button>
 </template>
 
 <style scoped>
 button {
-    border-radius: 8px;
-    background-color: var(--gray);
+  border-radius: 8px;
+  background-color: var(--gray);
 }
 
 button:hover {
-    background-color: #424242;
+  background-color: #424242;
 }
 </style>

@@ -31,28 +31,28 @@ function toggleActions() {
 </script>
 
 <template>
-    <div :style="{
-      width: props.width + 16 + 'px',
-      transform: `rotate(${rotation}deg)`,
-      position: 'absolute',
-      left: `${props.x}px`,
-      top: `${props.y}px` }">
-        <div class="actions" :class="hidden">
-            <Button title="Rotate" :tag="PhArrowClockwise" :width="29" :height="29" :iconSize="15" @click="rotate" />
-            <Button title="Remove" :tag="PhTrashSimple" :width="29" :height="29" :iconSize="15" @click="remove" />
+  <div :style="{
+    width: props.width + 16 + 'px',
+    transform: `rotate(${rotation}deg)`,
+    position: 'absolute',
+    left: `${props.x}px`,
+    top: `${props.y}px` }">
+      <div class="actions" :class="hidden">
+        <Button title="Rotate" :tag="PhArrowClockwise" :width="29" :height="29" :iconSize="15" @click="rotate" />
+        <Button title="Remove" :tag="PhTrashSimple" :width="29" :height="29" :iconSize="15" @click="remove" />
+      </div>
+
+      <div class="truss" :id="`truss-${id}`" :style="{ width: props.width + 16 + 'px' }">
+        <div
+          class="element"
+          :style="{ width: props.width + 'px' }"
+          @click.right.prevent="toggleActions">
+            <p>{{ props.width }}</p>
         </div>
 
-        <div class="truss" :id="`truss-${id}`" :style="{ width: props.width + 16 + 'px' }">
-            <button class="edge left" @click="() => edge('left')"></button>
-            <div
-                class="element"
-                :style="{ width: props.width + 'px' }"
-                @click.right.prevent="toggleActions">
-              <p>{{ props.width }}</p>
-            </div>
-            <button class="edge right" @click="() => edge('right')"></button>
-        </div>
-    </div>
+        <button class="edge right" @click="() => edge('right')"></button>
+      </div>
+  </div>
 </template>
 
 <style scoped>
@@ -62,20 +62,20 @@ function toggleActions() {
 }
 
 .actions {
-    height: 29px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  height: 29px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .element {
-    height: 29px;
-    background-color: gray;
-    text-align: center;
+  height: 29px;
+  background-color: gray;
+  text-align: center;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 .edge {
@@ -85,6 +85,6 @@ p {
 }
 
 .hidden {
-    opacity: 0;
+  opacity: 0;
 }
 </style>
