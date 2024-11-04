@@ -7,7 +7,7 @@ import login from "@/utils/auth/auth";
 export default function Home() {
   return (
     <>
-      <nav className="flex justify-end h-24 p-3">
+      <nav className="flex justify-end h-24">
         <Button title="Sign in with Google" icon={ User } onClick={ login } />
       </nav>
 
@@ -17,7 +17,7 @@ export default function Home() {
         <p>Create a new project</p>
       </div>
 
-      <footer className="flex justify-end items-end p-3 h-24">
+      <footer className="flex justify-end items-end h-24">
         <p>Made by <a href="https://github.com/jedrzejdubial" target="_blank" className="text-blue-500">jedrzej</a></p>
       </footer>
     </>
