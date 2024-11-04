@@ -1,8 +1,8 @@
 "use client";
 
-import { createElement } from "react";
-import { useRouter } from "next/navigation";
 import { Icon } from "@phosphor-icons/react";
+import { useRouter } from "next/navigation";
+import { createElement } from "react";
 
 export default function Button({ title, icon, onClick, path }: { title?: string, icon: Icon, onClick?: () => void, path?: string }) {
   const router = useRouter();

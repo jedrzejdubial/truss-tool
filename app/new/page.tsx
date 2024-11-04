@@ -7,7 +7,8 @@ import ListButton from "@/app/components/ListButton";
 import list from "@/public/list.json";
 import { ListNumbers, DownloadSimple, Plus } from "@phosphor-icons/react";
 
-export default async function Page() {
+export default function NewProject() {
+  const trusses = useRef([]);
   const elementsDialog = useRef(null);
 
   return (
@@ -17,9 +18,13 @@ export default async function Page() {
         <Button title={"Download an image of current canvas"} icon={ DownloadSimple }/>
       </nav>
 
+      {/* Canvas */}
       <div className={"h-full flex flex-col justify-center items-center gap-3"}>
-        <Button icon={ Plus } onClick={() => elementsDialog.current.showModal()} />
+        <Button icon={ Plus } onClick={() => elementsDialog?.current.showModal()} />
         <p>Start your project by adding the first truss</p>
+        {trusses.current.map(truss => (
+          <div key={truss}>hello world</div>
+        ))}
       </div>
 
       <Dialog title={"Elements"} ref={elementsDialog}>

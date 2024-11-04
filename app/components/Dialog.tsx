@@ -13,7 +13,7 @@ const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       <dialog ref={ ref } className={"w-1/2 h-2/3 bg-[var(--gray)] text-white rounded-xl p-4"}>
         <div className={"flex justify-between"}>
           <h1>{ title }</h1>
-          <Button title={"Close menu"} icon={ X } onClick={() => ref.current.close()} />
+          <Button title={"Close menu"} icon={ X } onClick={() => ref?.current.close()} />
         </div>
 
         { children }
