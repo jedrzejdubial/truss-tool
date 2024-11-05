@@ -11,7 +11,7 @@ export default function Button({ title, icon, onClick, path }: { title?: string,
 
   return (
     <button
-    className={"w-16 h-16 bg-[var(--gray)] hover:bg-[#424242] rounded-lg flex justify-center items-center"}
+    className="w-16 h-16 bg-[var(--gray)] hover:bg-[#424242] rounded-lg flex justify-center items-center"
     title={ title }
     onClick={ handleClick }>
       { createElement(icon, { size: 32 }) }

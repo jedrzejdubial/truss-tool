@@ -1,12 +1,13 @@
 "use client";
 
 import Button from "@/app/components/Button";
-import { ListNumbers, DownloadSimple, Plus } from "@phosphor-icons/react";
+import { ArrowLeft, ListNumbers, DownloadSimple, Plus } from "@phosphor-icons/react";
 
 export default function NewProject() {
   return (
     <>
       <nav className="flex gap-3">
+        <Button title="Go back" icon={ ArrowLeft } path="/" />
         <Button title="Show details" icon={ ListNumbers } />
         <Button title="Download an image of current canvas" icon={ DownloadSimple } />
       </nav>

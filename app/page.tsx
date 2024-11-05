@@ -1,10 +1,17 @@
 "use client";
 
+import { supabase } from "@/app/utils/supabase";
 import Button from "@/app/components/Button";
 import { User, FilePlus } from "@phosphor-icons/react";
-import login from "@/utils/auth/auth";
 
 export default function Home() {
+  async function login() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google'
+    });
+    if(error) throw(error);
+  };
+
   return (
     <>
       <nav className="flex justify-end h-24">
