@@ -28,3 +28,10 @@ h2 {
   line-height: 1.75rem; /* 28px */
   font-weight: 500;
 }
+
+.account_button {
+  background-color: var(--gray);
+  margin-top: 20px;
+  padding: 12px 18px;
+  border-radius: 14px;
+}
