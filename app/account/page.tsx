@@ -30,8 +30,9 @@ export default function Account() {
     if(error) throw(error);
   }
 
-  function signOut() { // TODO: make this better with refresh etc.
-    supabase.auth.signOut();
+  async function signOut() {
+    await supabase.auth.signOut();
+    window.location.reload();
   }
 
   return (

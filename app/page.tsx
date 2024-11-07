@@ -7,14 +7,12 @@ import { User, FilePlus } from "@phosphor-icons/react";
 
 export default function Home() {
   const [status, setStatus] = useState<string | null>(null);
-  const [supabaseUser, setSupabaseUser] = useState<{ name: string | null }>({ name: null });
 
   useEffect(() => {
     const getUserData = async() => {
       const { data: { user } } = await supabase.auth.getUser();
       const username = user?.user_metadata.full_name || null;
 
-      setSupabaseUser({ name: username });
       setStatus(username ? `Signed in as ${username}` : "Not signed in");
     };
 
