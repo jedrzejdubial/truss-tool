@@ -8,11 +8,7 @@ export const supabase = createClient(
 export const functions = {
   signIn: async () => {
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google'
-      });
-
-      if(error) throw error;
+      await supabase.auth.signInWithOAuth({ provider: 'google' });
     } catch(error) {
       console.error("Error signing in: " + error);
       alert("Failed to sign in. Please try again.");
