@@ -7,7 +7,7 @@ interface User {
   email: string | null;
 };
 
-export const getUserData = () => {
+export const useUserData = () => {
   const [user, setUser] = useState<User>({
     picture: '',
     name: null,

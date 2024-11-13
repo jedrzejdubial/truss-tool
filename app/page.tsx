@@ -1,11 +1,11 @@
 "use client";
 
-import { getUserData } from "@/app/utils/hooks/user";
+import { useUserData } from "@/app/utils/hooks/user";
 import Button from "@/app/components/Button";
 import { User, FilePlus } from "@phosphor-icons/react";
 
 export default function Home() {
-  const { user } = getUserData();
+  const { user } = useUserData();
 
   return (
     <>

@@ -1,6 +1,6 @@
 "use client";
 
-import { getUserData } from "@/app/utils/hooks/user";
+import { useUserData } from "@/app/utils/hooks/user";
 import Button from "@/app/components/Button";
 import { ArrowLeft } from "@phosphor-icons/react";
 import AccountWrap from "@/app/account/AccountWrap";
@@ -8,7 +8,7 @@ import { functions } from "@/app/utils/supabase";
 import Image from "next/image";
 
 export default function Account() {
-  const { user, isSignedIn } = getUserData();
+  const { user, isSignedIn } = useUserData();
 
   return (
     <>
