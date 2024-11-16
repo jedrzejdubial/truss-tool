@@ -39,7 +39,7 @@ export default function Account() {
 
           <AccountWrap>
             <h1>Sign out of your account</h1>
-            <button onClick={ functions.signOut } className="account_button">Sign out</button>
+            <button onClick={ functions.signOut } className="bg-[var(--gray)] mt-5 px-4 py-3 rounded-xl">Sign out</button>
           </AccountWrap>
 
           <AccountWrap>
