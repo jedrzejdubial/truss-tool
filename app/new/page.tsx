@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Button from "@/app/components/Button";
+import Truss from "@/app/components/Truss";
 import Dialog from "@/app/components/Dialog";
 import { ArrowLeft, ListNumbers, DownloadSimple, Plus } from "@phosphor-icons/react";
 import list from "@/public/list.json";
@@ -21,12 +22,14 @@ export default function NewProject() {
       <div className="flex flex-col flex-1 items-center justify-center gap-3">
         <Button icon={ Plus } onClick={ () => dialogRef.current?.showModal() } />
         <p>Start your project by adding the first truss</p>
+        <Truss width={ 400 } />
+        <Truss width={ 29 } />
       </div>
 
       <Dialog title="Elements" ref={ dialogRef }>
         <div className="grid grid-cols-3">
-          { list.items?.map(item => (
-            <button key={ item.id } className="flex m-2">
+          { list.items.map(item => (
+            <button key={ item.id } className="flex m-2" onClick={ () => console.log(`Added ${item.title}`) }>
               <Image src={ `/truss/${item.width}.jpg` } alt={ `Truss ${item.width}` } width={ 80 } height={ 80 } className="rounded-lg" />
 
               <div className="text-left ml-2">

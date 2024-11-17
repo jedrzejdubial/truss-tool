@@ -10,12 +10,18 @@ export default function Home() {
   return (
     <>
       <nav className="nav_right h-24">
-        <Button title="Go to Account center" text={ user.name ? `Signed in as ${user.name}` : "Not signed in" } icon={ User } path="/account" />
+        <Button 
+          title="Go to Account center" 
+          text={ user.name ? `Signed in as ${user.name}` : "Not signed in" } 
+          icon={ User } path="/account" />
       </nav>
 
       <main className="flex flex-col flex-1 items-center justify-center gap-3">
         <h1>Welcome to Truss Tool</h1>
-        <Button title="Create a new project" text="Create a new project" icon={ FilePlus } path="/new" />
+        <Button 
+          title="Create a new project" 
+          text="Create a new project" 
+          icon={ FilePlus } path="/new" />
       </main>
 
       <footer className="nav_right items-end h-24">
