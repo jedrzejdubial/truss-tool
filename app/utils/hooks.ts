@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/app/utils/supabase";
+import { supabase } from "@/app/utils/client";
 
 interface User {
   picture: string;

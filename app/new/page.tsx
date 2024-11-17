@@ -12,7 +12,7 @@ export default function NewProject() {
 
   return (
     <>
-      <nav className="flex gap-3">
+      <nav className="nav_left gap-3">
         <Button title="Go back" icon={ ArrowLeft } path="/" />
         <Button title="Show details" icon={ ListNumbers } />
         <Button title="Download an image of current canvas" icon={ DownloadSimple } />

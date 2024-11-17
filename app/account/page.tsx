@@ -1,10 +1,10 @@
 "use client";
 
-import { useUserData } from "@/app/utils/hooks/user";
+import { useUserData } from "@/app/utils/hooks";
 import Button from "@/app/components/Button";
 import { ArrowLeft } from "@phosphor-icons/react";
 import AccountWrap from "@/app/account/AccountWrap";
-import { functions } from "@/app/utils/supabase";
+import { functions } from "@/app/utils/client";
 import Image from "next/image";
 
 export default function Account() {
@@ -12,7 +12,7 @@ export default function Account() {
 
   return (
     <>
-      <nav className="flex items-center gap-6 mb-6">
+      <nav className="nav_left items-center gap-6 mb-6">
         <Button title="Go back" icon={ ArrowLeft } path="/" />
         <h1>Account Center</h1>
       </nav>
@@ -29,6 +29,7 @@ export default function Account() {
           <AccountWrap>
             <div className="grid grid-cols-[auto_1fr] gap-8">
               <Image src={ user.picture } alt="Profile picture" width={ 100 } height={ 100 } className="rounded-full" />
+
               <div className="grid">
                 <h1>{ user.name }</h1>
                 <h2>{ user.email }</h2>
@@ -39,7 +40,7 @@ export default function Account() {
 
           <AccountWrap>
             <h1>Sign out of your account</h1>
-            <button onClick={ functions.signOut } className="bg-[var(--gray)] mt-5 px-4 py-3 rounded-xl">Sign out</button>
+            <button onClick={ functions.signOut } className="account_button">Sign out</button>
           </AccountWrap>
 
           <AccountWrap>

@@ -29,6 +29,26 @@ h2 {
   font-weight: 500;
 }
 
+a {
+  color: rgb(59 130 246);
+}
+
+.nav_left {
+  display: flex;
+}
+
+.nav_right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.account_button {
+  background-color: var(--gray);
+  margin-top: 20px;
+  padding: 12px 24px;
+  border-radius: 12px;
+}
+
 .no-scrollbar {
   scrollbar-width: none;
 }
