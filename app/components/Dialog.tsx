@@ -9,15 +9,15 @@ interface DialogProps {
 
 const Dialog = forwardRef(({ title, children }: DialogProps, ref: Ref<HTMLDialogElement>) => {
   return (
-    <dialog ref={ ref } className="bg-[var(--gray)] text-white p-5 w-1/2 h-3/4 rounded-2xl no-scrollbar">
+    <dialog ref={ref} className="bg-[var(--gray)] text-white p-5 w-1/2 h-3/4 rounded-2xl no-scrollbar">
       <div className="flex justify-between">
-        <h1>{ title }</h1>
+        <h1>{title}</h1>
         <Button 
-          title="Go back" icon={ X } 
-          onClick={ () => (ref as RefObject<HTMLDialogElement>).current?.close() } />
+          title="Go back" icon={X} 
+          onClick={() => (ref as RefObject<HTMLDialogElement>).current?.close()} />
       </div>
 
-      { children }
+      {children}
     </dialog>
   );  
 });

@@ -71,6 +71,18 @@
       "title": "Truss 7cm",
       "width": 7,
       "weight": 0.5
+    },
+    {
+      "id": "l-shaped",
+      "title": "Truss L-Shaped",
+      "width": 50,
+      "weight": 6
+    },
+    {
+      "id": "cornerbox",
+      "title": "Cornerbox",
+      "width": 29,
+      "weight": 5.56
     }
   ]
 }
