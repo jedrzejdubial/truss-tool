@@ -15,8 +15,8 @@ export const useUserData = () => {
   });
 
   useEffect(() => {
-    const getUser = async () => {
-      const { data: { user: authUser } } = await supabase.auth.getUser();
+    const getUser = async() => {
+      const {data: {user: authUser}} = await supabase.auth.getUser();
 
       if(authUser) {
         setUser({
@@ -30,5 +30,5 @@ export const useUserData = () => {
     getUser();
   }, []);
 
-  return { user, isSignedIn: !!user.email };
+  return {user, isSignedIn: !!user.email};
 }

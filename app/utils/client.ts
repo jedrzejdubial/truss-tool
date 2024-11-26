@@ -6,16 +6,16 @@ export const supabase = createClient(
 );
 
 export const functions = {
-  signIn: async () => {
+  signIn: async() => {
     try {
-      await supabase.auth.signInWithOAuth({ provider: 'google' });
+      await supabase.auth.signInWithOAuth({provider: "google"});
     } catch(error) {
       console.error("Error signing in: " + error);
       alert("Failed to sign in. Please try again.");
     }
   },
 
-  signOut: async () => {
+  signOut: async() => {
     try {
       await supabase.auth.signOut();
 

@@ -5,15 +5,15 @@ import Button from "@/app/components/Button";
 import { User, FilePlus } from "@phosphor-icons/react";
 
 export default function Home() {
-  const { user } = useUserData();
+  const {user} = useUserData();
 
   return (
     <>
       <nav className="nav_right h-24">
         <Button 
           title="Go to Account center" 
-          text={ user.name ? `Signed in as ${user.name}` : "Not signed in" } 
-          icon={ User } path="/account" />
+          text={user.name ? `Signed in as ${user.name}` : "Not signed in"} 
+          icon={User} path="/account" />
       </nav>
 
       <main className="flex flex-col flex-1 items-center justify-center gap-3">
@@ -21,7 +21,7 @@ export default function Home() {
         <Button 
           title="Create a new project" 
           text="Create a new project" 
-          icon={ FilePlus } path="/new" />
+          icon={FilePlus} path="/new" />
       </main>
 
       <footer className="nav_right items-end h-24">

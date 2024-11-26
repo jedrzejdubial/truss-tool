@@ -25,14 +25,14 @@ export default function Button(
     <div className="flex flex-col items-center gap-2 w-fit">
       <button
       className="bg-[var(--gray)] hover:bg-[#424242] rounded-lg flex justify-center items-center"
-      style={{ width: width, height: height }}
-      title={ title }
-      onClick={ handleClick }>
-        { createElement(icon, { size: iconSize }) }
+      style={{width: width, height: height}}
+      title={title}
+      onClick={handleClick}>
+        {createElement(icon, {size: iconSize})}
       </button>
 
-      { text && 
-      <p>{ text }</p> }
+      {text && 
+      <p>{text}</p>}
     </div>
   );
 }

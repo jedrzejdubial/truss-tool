@@ -8,31 +8,31 @@ import { functions } from "@/app/utils/client";
 import Image from "next/image";
 
 export default function Account() {
-  const { user, isSignedIn } = useUserData();
+  const {user, isSignedIn} = useUserData();
 
   return (
     <>
       <nav className="nav_left items-center gap-6 mb-6">
-        <Button title="Go back" icon={ ArrowLeft } path="/" />
+        <Button title="Go back" icon={ArrowLeft} path="/" />
         <h1>Account Center</h1>
       </nav>
 
       <main className="flex flex-col w-4/5 p-8">
-        { /* Display this if user is not signed in */ }
-        { !isSignedIn && <AccountWrap>
+        {/* Display this if user is not signed in */}
+        {!isSignedIn && <AccountWrap>
           <h1>You are not signed in</h1>
-          <button onClick={ functions.signIn } className="account_button">Sign in with Google</button>
-        </AccountWrap> }
+          <button onClick={functions.signIn} className="account_button">Sign in with Google</button>
+        </AccountWrap>}
 
-        { /* Display this if user is signed in */ }
-        { isSignedIn && <div>
+        {/* Display this if user is signed in */}
+        {isSignedIn && <div>
           <AccountWrap>
             <div className="grid grid-cols-[auto_1fr] gap-8">
-              <Image src={ user.picture } alt="Profile picture" width={ 100 } height={ 100 } className="rounded-full" />
+              <Image src={user.picture} alt="Profile picture" width={100} height={100} className="rounded-full" />
 
               <div className="grid">
-                <h1>{ user.name }</h1>
-                <h2>{ user.email }</h2>
+                <h1>{user.name}</h1>
+                <h2>{user.email}</h2>
                 <p>Account created with Google</p>
               </div>
             </div>
@@ -40,7 +40,7 @@ export default function Account() {
 
           <AccountWrap>
             <h1>Sign out of your account</h1>
-            <button onClick={ functions.signOut } className="account_button">Sign out</button>
+            <button onClick={functions.signOut} className="account_button">Sign out</button>
           </AccountWrap>
 
           <AccountWrap>
