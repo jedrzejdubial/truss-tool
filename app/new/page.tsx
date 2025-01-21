@@ -18,7 +18,8 @@ interface TrussType {
 }
 
 export default function NewProject() {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const elementsDialog = useRef<HTMLDialogElement>(null);
+  const detailsDialog = useRef<HTMLDialogElement>(null);
   const [trusses, setTrusses] = useState<TrussType[]>([]);
   const [selectedTruss, setSelectedTruss] = useState<TrussType | null>(null);
 
@@ -40,30 +41,44 @@ export default function NewProject() {
       };
       setTrusses([...trusses, initialTruss]);
     }
-    dialogRef.current?.close();
+    elementsDialog.current?.close();
   }
 
   function removeTruss(id: number) {
     setTrusses(trusses.filter(truss => truss.id !== id));
   }
 
+  function group() {
+    // Group by width
+    const grouped = trusses.reduce((acc: Record<number, number>, truss) => {
+      acc[truss.width] = (acc[truss.width] || 0) + 1;
+      return acc;
+    }, {});
+
+    return Object.entries(grouped).map(([width, count]) => ({
+      width: parseInt(width),
+      count
+    })).sort((a, b) => b.width - a.width); // Sort in descending order
+  }
+
+  // TODO
   function onEdgeLeft(truss: TrussType) {
     setSelectedTruss(truss);
-    dialogRef.current?.showModal();
+    elementsDialog.current?.showModal();
   }
   
   return (
     <>
       <nav className="nav_left gap-3 mb-4">
         <Button title="Go back" icon={ArrowLeft} path="/" />
-        <Button title="Show details" icon={Info} />
+        <Button title="Show details" icon={Info} onClick={() => detailsDialog.current?.showModal()} />
         <Button title="Download an image of current canvas" icon={DownloadSimple} />
       </nav>
 
       {/* Display only when there's no truss */}
       {trusses.length === 0 && 
       <div className="flex flex-col flex-1 items-center justify-center gap-3">
-        <Button icon={Plus} onClick={() => dialogRef.current?.showModal()} />
+        <Button icon={Plus} onClick={() => elementsDialog.current?.showModal()} />
         <p>Start your project by adding the first truss</p>
       </div>}
 
@@ -81,7 +96,7 @@ export default function NewProject() {
         })}
       </div>
 
-      <Dialog title="Elements" ref={dialogRef}>
+      <Dialog title="Elements" ref={elementsDialog}>
         <div className="grid grid-cols-3">
           {list.items.map(item => (
             <button 
@@ -98,6 +113,14 @@ export default function NewProject() {
                 <p>{item.weight}kg</p>
               </div>              
             </button>
+          ))}
+        </div>
+      </Dialog>
+
+      <Dialog title="Details" ref={detailsDialog}>
+        <div>
+          {group().map(({width, count}) => (
+            <p key={width}>{count > 1 ? `${count}x ${width}cm` : `1x ${width}cm`}</p>
           ))}
         </div>
       </Dialog>
