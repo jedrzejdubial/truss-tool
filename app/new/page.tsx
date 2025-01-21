@@ -4,29 +4,59 @@ import { useRef, useState } from "react";
 import Button from "@/app/components/Button";
 import Truss from "@/app/components/Truss";
 import Dialog from "@/app/components/Dialog";
-import { ArrowLeft, ListNumbers, DownloadSimple, Plus } from "@phosphor-icons/react";
+import { ArrowLeft, Info, DownloadSimple, Plus } from "@phosphor-icons/react";
 import { generateId } from "@/app/utils/math";
 import list from "@/public/list.json";
 import Image from "next/image";
 
-interface Truss {
+interface TrussType {
   width: number;
+  top: number;
+  right: number;
+  left: number;
   id: number;
 }
 
 export default function NewProject() {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const [trusses, setTrusses] = useState<Truss[]>([]);
+  const [trusses, setTrusses] = useState<TrussType[]>([]);
+  const [selectedTruss, setSelectedTruss] = useState<TrussType | null>(null);
+
+  function addTruss(newTruss: TrussType, prevTruss: TrussType | null = null) {
+    // Added as a sibling
+    if(prevTruss) {
+      const updatedTruss = {
+        ...newTruss,
+        left: prevTruss.left + prevTruss.width,
+        top: 0,
+        id: generateId()
+      };
+      setTrusses([...trusses, updatedTruss]);
+    } else {
+      // Initial truss
+      const initialTruss = {
+        ...newTruss,
+        id: generateId()
+      };
+      setTrusses([...trusses, initialTruss]);
+    }
+    dialogRef.current?.close();
+  }
 
   function removeTruss(id: number) {
     setTrusses(trusses.filter(truss => truss.id !== id));
+  }
+
+  function onEdgeLeft(truss: TrussType) {
+    setSelectedTruss(truss);
+    dialogRef.current?.showModal();
   }
   
   return (
     <>
       <nav className="nav_left gap-3 mb-4">
         <Button title="Go back" icon={ArrowLeft} path="/" />
-        <Button title="Show details" icon={ListNumbers} />
+        <Button title="Show details" icon={Info} />
         <Button title="Download an image of current canvas" icon={DownloadSimple} />
       </nav>
 
@@ -37,9 +67,17 @@ export default function NewProject() {
         <p>Start your project by adding the first truss</p>
       </div>}
 
-      <div className="Canvas">
+      <div className="Canvas" style={{position: "relative"}}>
         {trusses.map(truss => {
-          return <Truss key={truss.id} width={truss.width} onRemove={() => removeTruss(truss.id)} />
+          return <Truss 
+            key={truss.id} 
+            width={truss.width} 
+            top={truss.top}
+            left={truss.left}
+            onRemove={() => removeTruss(truss.id)} 
+            onEdgeLeft={() => onEdgeLeft(truss)} 
+            onEdgeRight={() => {}}
+          />
         })}
       </div>
 
@@ -50,8 +88,7 @@ export default function NewProject() {
             key={item.id} 
             className="flex m-2" 
             onClick={() => {
-              setTrusses([...trusses, {width: item.width, id: generateId()}]);
-              dialogRef.current?.close();
+              addTruss({width: item.width, top: 0, right: 0, left: 0, id: generateId()}, selectedTruss)
             }}>
               <Image src={`/truss/${item.width}.jpg`} alt={`Truss ${item.width}`} width={80} height={80} className="rounded-lg" />
 
